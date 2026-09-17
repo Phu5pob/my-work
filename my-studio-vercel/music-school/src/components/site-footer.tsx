@@ -2,23 +2,14 @@ import Link from "next/link";
 
 export function SiteFooter() {
   return (
-<<<<<<< HEAD
     <footer className="border-t border-line mt-24 bg-white">
-=======
-    <footer className="border-t border-line mt-24">
->>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
       <div className="mx-auto max-w-6xl px-5 sm:px-8 py-12">
         <div className="grid gap-10 sm:grid-cols-3">
           <div>
             <span className="font-display text-xl text-burgundy">My Studio</span>
             <p className="mt-3 text-sm text-ink-soft leading-relaxed max-w-xs">
-<<<<<<< HEAD
               โรงเรียนสอนดนตรีสำหรับทุกวัย เปิดสอนเปียโน กีตาร์ ร้องเพลง กลอง และไวโอลิน
               สาขาพัทลุง ตรัง และนครศรีธรรมราช
-=======
-              โรงเรียนสอนดนตรีสำหรับทุกวัย เปิดสอนเปียโน กีตาร์ ร้องเพลง
-              กลอง และไวโอลิน หลายสาขาทั่วกรุงเทพฯ
->>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
             </p>
           </div>
           <div>
@@ -32,13 +23,11 @@ export function SiteFooter() {
           <div>
             <p className="text-xs tracking-wide text-ink-soft mb-3">ติดต่อเรา</p>
             <ul className="space-y-2 text-sm text-ink-soft">
-<<<<<<< HEAD
               <li>โทร 080-235-4146</li>
-=======
-              <li>โทร 02-123-4567</li>
->>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
-              <li>info@mystudio.example</li>
-              <li>เปิดทุกวัน 9:00–20:00 น.</li>
+              <li>khanida2005@gmail.com</li>
+              <li>เปิดทุกวัน 9:00–19:00 น.</li>
+              <li>FB:Mystudio Musicschool and Instruments
+</li>
             </ul>
           </div>
         </div>
