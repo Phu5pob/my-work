@@ -1,9 +1,23 @@
 import {
+<<<<<<< HEAD
   pgTable, text, integer, real, boolean, serial, timestamp,
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
 // ---------- Branches ----------
+=======
+  pgTable,
+  text,
+  integer,
+  real,
+  boolean,
+  serial,
+  timestamp,
+} from "drizzle-orm/pg-core";
+import { relations, sql } from "drizzle-orm";
+
+// ---------- Branches (สาขา) ----------
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
 export const branches = pgTable("branches", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
@@ -14,13 +28,21 @@ export const branches = pgTable("branches", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+<<<<<<< HEAD
 // ---------- Users (admin | teacher | student) ----------
+=======
+// ---------- Users ----------
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
   passwordHash: text("password_hash").notNull(),
+<<<<<<< HEAD
   role: text("role").$type<"admin" | "teacher" | "student">().notNull().default("student"),
+=======
+  role: text("role").$type<"admin" | "student">().notNull().default("student"),
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
   phone: text("phone").default(""),
   branchId: integer("branch_id").references(() => branches.id, { onDelete: "set null" }),
   avatarUrl: text("avatar_url").default(""),
@@ -43,6 +65,7 @@ export const courses = pgTable("courses", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+<<<<<<< HEAD
 // ---------- Rooms (ห้องเรียน) ----------
 export const rooms = pgTable("rooms", {
   id: serial("id").primaryKey(),
@@ -52,15 +75,25 @@ export const rooms = pgTable("rooms", {
   description: text("description").default(""),
 });
 
+=======
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
 // ---------- Schedules ----------
 export const schedules = pgTable("schedules", {
   id: serial("id").primaryKey(),
   courseId: integer("course_id").notNull().references(() => courses.id, { onDelete: "cascade" }),
+<<<<<<< HEAD
   teacherId: integer("teacher_id").references(() => users.id, { onDelete: "set null" }),
   roomId: integer("room_id").references(() => rooms.id, { onDelete: "set null" }),
   dayOfWeek: integer("day_of_week").notNull(),
   startTime: text("start_time").notNull(),
   endTime: text("end_time").notNull(),
+=======
+  teacherName: text("teacher_name").notNull(),
+  dayOfWeek: integer("day_of_week").notNull(),
+  startTime: text("start_time").notNull(),
+  endTime: text("end_time").notNull(),
+  room: text("room").default(""),
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
   maxStudents: integer("max_students").notNull().default(8),
 });
 
@@ -94,7 +127,10 @@ export const progressRecords = pgTable("progress_records", {
   id: serial("id").primaryKey(),
   userId: integer("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
   courseId: integer("course_id").notNull().references(() => courses.id, { onDelete: "cascade" }),
+<<<<<<< HEAD
   teacherId: integer("teacher_id").references(() => users.id, { onDelete: "set null" }),
+=======
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
   term: text("term").notNull(),
   score: integer("score"),
   skillLevel: text("skill_level").default(""),
@@ -118,6 +154,7 @@ export const articles = pgTable("articles", {
 
 // ---------- Relations ----------
 export const branchesRelations = relations(branches, ({ many }) => ({
+<<<<<<< HEAD
   users: many(users), courses: many(courses), articles: many(articles), rooms: many(rooms),
 }));
 export const usersRelations = relations(users, ({ one, many }) => ({
@@ -139,21 +176,60 @@ export const schedulesRelations = relations(schedules, ({ one, many }) => ({
   room: one(rooms, { fields: [schedules.roomId], references: [rooms.id] }),
   enrollments: many(enrollments),
 }));
+=======
+  users: many(users),
+  courses: many(courses),
+  articles: many(articles),
+}));
+
+export const usersRelations = relations(users, ({ one, many }) => ({
+  branch: one(branches, { fields: [users.branchId], references: [branches.id] }),
+  enrollments: many(enrollments),
+  payments: many(payments),
+  progressRecords: many(progressRecords),
+}));
+
+export const coursesRelations = relations(courses, ({ one, many }) => ({
+  branch: one(branches, { fields: [courses.branchId], references: [branches.id] }),
+  schedules: many(schedules),
+  enrollments: many(enrollments),
+  progressRecords: many(progressRecords),
+}));
+
+export const schedulesRelations = relations(schedules, ({ one, many }) => ({
+  course: one(courses, { fields: [schedules.courseId], references: [courses.id] }),
+  enrollments: many(enrollments),
+}));
+
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
 export const enrollmentsRelations = relations(enrollments, ({ one, many }) => ({
   user: one(users, { fields: [enrollments.userId], references: [users.id] }),
   course: one(courses, { fields: [enrollments.courseId], references: [courses.id] }),
   schedule: one(schedules, { fields: [enrollments.scheduleId], references: [schedules.id] }),
   payments: many(payments),
 }));
+<<<<<<< HEAD
+=======
+
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
 export const paymentsRelations = relations(payments, ({ one }) => ({
   user: one(users, { fields: [payments.userId], references: [users.id] }),
   enrollment: one(enrollments, { fields: [payments.enrollmentId], references: [enrollments.id] }),
 }));
+<<<<<<< HEAD
 export const progressRelations = relations(progressRecords, ({ one }) => ({
   user: one(users, { fields: [progressRecords.userId], references: [users.id] }),
   course: one(courses, { fields: [progressRecords.courseId], references: [courses.id] }),
   teacher: one(users, { fields: [progressRecords.teacherId], references: [users.id], relationName: "teacherProgress" }),
 }));
+=======
+
+export const progressRelations = relations(progressRecords, ({ one }) => ({
+  user: one(users, { fields: [progressRecords.userId], references: [users.id] }),
+  course: one(courses, { fields: [progressRecords.courseId], references: [courses.id] }),
+}));
+
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
 export const articlesRelations = relations(articles, ({ one }) => ({
   branch: one(branches, { fields: [articles.branchId], references: [branches.id] }),
   author: one(users, { fields: [articles.authorId], references: [users.id] }),

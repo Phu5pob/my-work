@@ -4,21 +4,42 @@ import { getSession } from "@/lib/auth";
 const LINKS = [
   { href: "/dashboard", label: "ภาพรวม" },
   { href: "/dashboard/bookings", label: "การจองของฉัน" },
+<<<<<<< HEAD
   { href: "/dashboard/rooms", label: "ห้องเรียนของฉัน" },
+=======
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
   { href: "/dashboard/payments", label: "การชำระเงิน" },
   { href: "/dashboard/progress", label: "ผลการเรียน" },
 ];
 
+<<<<<<< HEAD
 export default async function DashboardLayout({ children }: LayoutProps) {
   const session = await getSession();
+=======
+export default async function DashboardLayout({ children }: LayoutProps<"/dashboard">) {
+  const session = await getSession();
+
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
   return (
     <div className="mx-auto max-w-6xl px-5 sm:px-8 py-12">
       <p className="text-sm text-ink-soft">สวัสดี</p>
       <h1 className="font-display text-2xl sm:text-3xl mb-8">{session?.name}</h1>
+<<<<<<< HEAD
       <div className="grid lg:grid-cols-[200px_1fr] gap-10">
         <nav className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible border-b lg:border-b-0 lg:border-r border-line pb-3 lg:pb-0 lg:pr-6">
           {LINKS.map((link) => (
             <Link key={link.href} href={link.href} className="text-sm text-ink-soft hover:text-burgundy whitespace-nowrap px-1 py-1.5">
+=======
+
+      <div className="grid lg:grid-cols-[200px_1fr] gap-10">
+        <nav className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible border-b lg:border-b-0 lg:border-r border-line pb-3 lg:pb-0 lg:pr-6">
+          {LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm text-ink-soft hover:text-burgundy whitespace-nowrap px-1 py-1.5"
+            >
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
               {link.label}
             </Link>
           ))}

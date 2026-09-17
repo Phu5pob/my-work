@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { href: "/news", label: "ข่าวสาร" },
 ];
 
+<<<<<<< HEAD
 function getPortalLink(session: SessionPayload | null) {
   if (!session) return null;
   if (session.role === "admin") return { href: "/admin", label: "แผงแอดมิน" };
@@ -31,12 +32,39 @@ export function SiteHeader({ session }: { session: SessionPayload | null }) {
           <Link href="/" className="flex items-baseline gap-2 shrink-0">
             <span className="font-display text-2xl tracking-tight text-burgundy">My Studio</span>
             <span className="hidden sm:inline text-[11px] tracking-wide text-ink-soft">โรงเรียนสอนดนตรี</span>
+=======
+export function SiteHeader({ session }: { session: SessionPayload | null }) {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  return (
+    <header className="border-b border-line bg-ivory/95 backdrop-blur sticky top-0 z-40">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="flex h-18 items-center justify-between py-4">
+          <Link href="/" className="flex items-baseline gap-2 shrink-0">
+            <span className="font-display text-2xl tracking-tight text-burgundy">
+              My Studio
+            </span>
+            <span className="hidden sm:inline text-[11px] tracking-wide text-ink-soft">
+              โรงเรียนสอนดนตรี
+            </span>
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
+<<<<<<< HEAD
               <Link key={link.href} href={link.href}
                 className={`text-sm transition-colors hover:text-burgundy ${pathname.startsWith(link.href) ? "text-burgundy font-medium" : "text-ink-soft"}`}>
+=======
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm transition-colors hover:text-burgundy ${
+                  pathname.startsWith(link.href) ? "text-burgundy font-medium" : "text-ink-soft"
+                }`}
+              >
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
                 {link.label}
               </Link>
             ))}
@@ -45,11 +73,20 @@ export function SiteHeader({ session }: { session: SessionPayload | null }) {
           <div className="hidden md:flex items-center gap-3">
             {session ? (
               <>
+<<<<<<< HEAD
                 {portal && (
                   <Link href={portal.href} className="text-sm text-ink-soft hover:text-burgundy transition-colors">
                     {session.role === "teacher" ? `สวัสดี ${session.name}` : portal.label}
                   </Link>
                 )}
+=======
+                <Link
+                  href={session.role === "admin" ? "/admin" : "/dashboard"}
+                  className="text-sm text-ink-soft hover:text-burgundy transition-colors"
+                >
+                  {session.role === "admin" ? "แผงควบคุมแอดมิน" : "สวัสดี " + session.name}
+                </Link>
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
                 <form action={logoutAction}>
                   <button className="text-sm rounded-full border border-line px-4 py-2 hover:border-burgundy hover:text-burgundy transition-colors">
                     ออกจากระบบ
@@ -58,15 +95,33 @@ export function SiteHeader({ session }: { session: SessionPayload | null }) {
               </>
             ) : (
               <>
+<<<<<<< HEAD
                 <Link href="/login" className="text-sm text-ink-soft hover:text-burgundy transition-colors">เข้าสู่ระบบ</Link>
                 <Link href="/register" className="text-sm rounded-full bg-burgundy text-white px-4 py-2 hover:bg-burgundy-deep transition-colors">
+=======
+                <Link href="/login" className="text-sm text-ink-soft hover:text-burgundy transition-colors">
+                  เข้าสู่ระบบ
+                </Link>
+                <Link
+                  href="/register"
+                  className="text-sm rounded-full bg-burgundy text-ivory px-4 py-2 hover:bg-burgundy-deep transition-colors"
+                >
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
                   สมัครเรียน
                 </Link>
               </>
             )}
           </div>
 
+<<<<<<< HEAD
           <button className="md:hidden p-2 -mr-2 text-ink" onClick={() => setOpen((v) => !v)} aria-label="เปิดเมนู">
+=======
+          <button
+            className="md:hidden p-2 -mr-2 text-ink"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="เปิดเมนู"
+          >
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
             <span className="block w-6 h-px bg-ink mb-1.5" />
             <span className="block w-6 h-px bg-ink mb-1.5" />
             <span className="block w-4 h-px bg-ink" />
@@ -75,6 +130,7 @@ export function SiteHeader({ session }: { session: SessionPayload | null }) {
       </div>
 
       {open && (
+<<<<<<< HEAD
         <div className="md:hidden border-t border-line px-5 py-4 flex flex-col gap-4 bg-white">
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="text-sm text-ink-soft">{link.label}</Link>
@@ -84,6 +140,23 @@ export function SiteHeader({ session }: { session: SessionPayload | null }) {
             <>
               <Link href={portal.href} onClick={() => setOpen(false)} className="text-sm text-burgundy">{portal.label}</Link>
               <form action={logoutAction}><button className="text-sm text-ink-soft">ออกจากระบบ</button></form>
+=======
+        <div className="md:hidden border-t border-line px-5 py-4 flex flex-col gap-4 bg-ivory">
+          {NAV_LINKS.map((link) => (
+            <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="text-sm text-ink-soft">
+              {link.label}
+            </Link>
+          ))}
+          <div className="h-px bg-line" />
+          {session ? (
+            <>
+              <Link href={session.role === "admin" ? "/admin" : "/dashboard"} onClick={() => setOpen(false)} className="text-sm text-burgundy">
+                {session.role === "admin" ? "แผงควบคุมแอดมิน" : "แดชบอร์ดของฉัน"}
+              </Link>
+              <form action={logoutAction}>
+                <button className="text-sm text-ink-soft">ออกจากระบบ</button>
+              </form>
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
             </>
           ) : (
             <>

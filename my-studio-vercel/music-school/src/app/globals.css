@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+<<<<<<< HEAD
   --ivory: #f0f7ff;
   --ivory-deep: #daeeff;
   --ink: #0a1628;
@@ -13,6 +14,19 @@
   --sage: #0891b2;
   --line: #bfdbfe;
   --danger: #dc2626;
+=======
+  --ivory: #faf6ee;
+  --ivory-deep: #f1e9d8;
+  --ink: #221d18;
+  --ink-soft: #4a4238;
+  --burgundy: #7c2b34;
+  --burgundy-deep: #5c1f26;
+  --brass: #b8863b;
+  --brass-soft: #e3cd9c;
+  --sage: #5e6b52;
+  --line: #e4dcc9;
+  --danger: #a83c3c;
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
 }
 
 @theme inline {
@@ -20,16 +34,29 @@
   --color-ivory-deep: var(--ivory-deep);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
+<<<<<<< HEAD
   --color-burgundy: var(--primary);
   --color-burgundy-deep: var(--primary-deep);
   --color-brass: var(--accent);
   --color-brass-soft: var(--accent-soft);
+=======
+  --color-burgundy: var(--burgundy);
+  --color-burgundy-deep: var(--burgundy-deep);
+  --color-brass: var(--brass);
+  --color-brass-soft: var(--brass-soft);
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
   --color-sage: var(--sage);
   --color-line: var(--line);
   --color-danger: var(--danger);
 }
 
+<<<<<<< HEAD
 html { scroll-behavior: smooth; }
+=======
+html {
+  scroll-behavior: smooth;
+}
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
 
 body {
   background: var(--ivory);
@@ -39,6 +66,7 @@ body {
 
 h1, h2, h3, h4, .font-display {
   font-family: "Sarabun", "Noto Serif Thai", "Georgia", serif;
+<<<<<<< HEAD
   font-weight: 700;
 }
 
@@ -46,4 +74,30 @@ h1, h2, h3, h4, .font-display {
 
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+=======
+  font-weight: 600;
+}
+
+::selection {
+  background: var(--brass-soft);
+  color: var(--ink);
+}
+
+.staff-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--line) 0,
+    var(--line) 1px,
+    transparent 1px,
+    transparent 14px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+>>>>>>> 874ea79cc431605fe47de8f3588255dbbc2c6779
 }
